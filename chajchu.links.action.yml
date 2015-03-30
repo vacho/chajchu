@@ -1,0 +1,49 @@
+entity.product.add_form:
+  route_name: entity.product.add_form
+  title: 'Add Product'
+  appears_on:
+    - entity.product.collection
+    - entity.product.canonical
+
+entity.photo.add_form:
+  route_name: entity.photo.add_form
+  title: 'Add Photo'
+  appears_on:
+    - entity.photo.collection
+    - entity.photo.canonical
+
+entity.offer.add_form:
+  route_name: entity.offer.add_form
+  title: 'Add Offer'
+  appears_on:
+    - entity.offer.collection
+    - entity.offer.canonical
+
+entity.category.add_form:
+  route_name: entity.category.add_form
+  title: 'Add Category'
+  appears_on:
+    - entity.category.collection
+    - entity.category.canonical
+
+entity.presentation.add_form:
+  route_name: entity.presentation.add_form
+  title: 'Add Presentation'
+  appears_on:
+    - entity.presentation.collection
+    - entity.presentation.canonical
+
+entity.political_division.add_form:
+  route_name: entity.political_division.add_form
+  title: 'Add PoliticalDivision'
+  appears_on:
+    - entity.political_division.collection
+    - entity.political_division.canonical
+
+entity.person.add_form:
+  route_name: entity.person.add_form
+  title: 'Add Person'
+  appears_on:
+    - entity.person.collection
+    - entity.person.canonical
+

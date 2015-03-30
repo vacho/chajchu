@@ -1,0 +1,84 @@
+# Product menu items definition
+entity.product.collection:
+  title: 'Product: Listing'
+  route_name: entity.product.collection
+  description: 'List Product'
+
+product.admin.structure.settings:
+  title: Product Settings
+  description: 'Configure Product entity'
+  route_name:  product.settings
+  parent: system.admin_structure
+
+# Photo menu items definition
+entity.photo.collection:
+  title: 'Photo: Listing'
+  route_name: entity.photo.collection
+  description: 'List Photo'
+
+photo.admin.structure.settings:
+  title: Photo Settings
+  description: 'Configure Photo entity'
+  route_name:  photo.settings
+  parent: system.admin_structure
+
+# Offer menu items definition
+entity.offer.collection:
+  title: 'Offer: Listing'
+  route_name: entity.offer.collection
+  description: 'List Offer'
+
+offer.admin.structure.settings:
+  title: Offer Settings
+  description: 'Configure Offer entity'
+  route_name:  offer.settings
+  parent: system.admin_structure
+
+# Category menu items definition
+entity.category.collection:
+  title: 'Category: Listing'
+  route_name: entity.category.collection
+  description: 'List Category'
+
+category.admin.structure.settings:
+  title: Category Settings
+  description: 'Configure Category entity'
+  route_name:  category.settings
+  parent: system.admin_structure
+
+# Presentation menu items definition
+entity.presentation.collection:
+  title: 'Presentation: Listing'
+  route_name: entity.presentation.collection
+  description: 'List Presentation'
+
+presentation.admin.structure.settings:
+  title: Presentation Settings
+  description: 'Configure Presentation entity'
+  route_name:  presentation.settings
+  parent: system.admin_structure
+
+# PoliticalDivision menu items definition
+entity.political_division.collection:
+  title: 'PoliticalDivision: Listing'
+  route_name: entity.political_division.collection
+  description: 'List PoliticalDivision'
+
+political_division.admin.structure.settings:
+  title: PoliticalDivision Settings
+  description: 'Configure PoliticalDivision entity'
+  route_name:  political_division.settings
+  parent: system.admin_structure
+
+# Person menu items definition
+entity.person.collection:
+  title: 'Person: Listing'
+  route_name: entity.person.collection
+  description: 'List Person'
+
+person.admin.structure.settings:
+  title: Person Settings
+  description: 'Configure Person entity'
+  route_name:  person.settings
+  parent: system.admin_structure
+

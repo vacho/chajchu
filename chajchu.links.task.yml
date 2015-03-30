@@ -1,0 +1,147 @@
+# Product routing definition
+product.settings_tab:
+  route_name: product.settings
+  title: 'Settings'
+  base_route: product.settings
+
+entity.product.canonical:
+  route_name: entity.product.canonical
+  base_route: entity.product.canonical
+  title: 'View'
+
+entity.product.edit_form:
+  route_name: entity.product.edit_form
+  base_route: entity.product.canonical
+  title: Edit
+
+entity.product.delete_form:
+  route_name:  entity.product.delete_form
+  base_route:  entity.product.canonical
+  title: Delete
+
+# Photo routing definition
+photo.settings_tab:
+  route_name: photo.settings
+  title: 'Settings'
+  base_route: photo.settings
+
+entity.photo.canonical:
+  route_name: entity.photo.canonical
+  base_route: entity.photo.canonical
+  title: 'View'
+
+entity.photo.edit_form:
+  route_name: entity.photo.edit_form
+  base_route: entity.photo.canonical
+  title: Edit
+
+entity.photo.delete_form:
+  route_name:  entity.photo.delete_form
+  base_route:  entity.photo.canonical
+  title: Delete
+
+# Offer routing definition
+offer.settings_tab:
+  route_name: offer.settings
+  title: 'Settings'
+  base_route: offer.settings
+
+entity.offer.canonical:
+  route_name: entity.offer.canonical
+  base_route: entity.offer.canonical
+  title: 'View'
+
+entity.offer.edit_form:
+  route_name: entity.offer.edit_form
+  base_route: entity.offer.canonical
+  title: Edit
+
+entity.offer.delete_form:
+  route_name:  entity.offer.delete_form
+  base_route:  entity.offer.canonical
+  title: Delete
+
+# Category routing definition
+category.settings_tab:
+  route_name: category.settings
+  title: 'Settings'
+  base_route: category.settings
+
+entity.category.canonical:
+  route_name: entity.category.canonical
+  base_route: entity.category.canonical
+  title: 'View'
+
+entity.category.edit_form:
+  route_name: entity.category.edit_form
+  base_route: entity.category.canonical
+  title: Edit
+
+entity.category.delete_form:
+  route_name:  entity.category.delete_form
+  base_route:  entity.category.canonical
+  title: Delete
+
+# Presentation routing definition
+presentation.settings_tab:
+  route_name: presentation.settings
+  title: 'Settings'
+  base_route: presentation.settings
+
+entity.presentation.canonical:
+  route_name: entity.presentation.canonical
+  base_route: entity.presentation.canonical
+  title: 'View'
+
+entity.presentation.edit_form:
+  route_name: entity.presentation.edit_form
+  base_route: entity.presentation.canonical
+  title: Edit
+
+entity.presentation.delete_form:
+  route_name:  entity.presentation.delete_form
+  base_route:  entity.presentation.canonical
+  title: Delete
+
+# PoliticalDivision routing definition
+political_division.settings_tab:
+  route_name: political_division.settings
+  title: 'Settings'
+  base_route: political_division.settings
+
+entity.political_division.canonical:
+  route_name: entity.political_division.canonical
+  base_route: entity.political_division.canonical
+  title: 'View'
+
+entity.political_division.edit_form:
+  route_name: entity.political_division.edit_form
+  base_route: entity.political_division.canonical
+  title: Edit
+
+entity.political_division.delete_form:
+  route_name:  entity.political_division.delete_form
+  base_route:  entity.political_division.canonical
+  title: Delete
+
+# Person routing definition
+person.settings_tab:
+  route_name: person.settings
+  title: 'Settings'
+  base_route: person.settings
+
+entity.person.canonical:
+  route_name: entity.person.canonical
+  base_route: entity.person.canonical
+  title: 'View'
+
+entity.person.edit_form:
+  route_name: entity.person.edit_form
+  base_route: entity.person.canonical
+  title: Edit
+
+entity.person.delete_form:
+  route_name:  entity.person.delete_form
+  base_route:  entity.person.canonical
+  title: Delete
+

@@ -1,0 +1,343 @@
+# Product routing definition
+entity.product.canonical:
+  path: '/admin/product/{product}'
+  defaults:
+    _entity_view: 'product'
+    _title: 'Product Content'
+  requirements:
+    _entity_access: 'product.view'
+
+entity.product.collection:
+  path: '/admin/product'
+  defaults:
+    _entity_list: 'product'
+    _title: 'Product List'
+  requirements:
+    _permission: 'view Product entity'
+
+entity.product.add_form:
+  path: '/admin/product/add'
+  defaults:
+    _entity_form: product.add
+    _title: 'Add Product'
+  requirements:
+    _entity_create_access: 'product'
+
+entity.product.edit_form:
+  path: '/admin/product/{product}/edit'
+  defaults:
+    _entity_form: product.edit
+    _title: 'Edit Product'
+  requirements:
+    _entity_access: 'product.edit'
+
+entity.product.delete_form:
+  path: '/admin/product/{product}/delete'
+  defaults:
+    _entity_form: product.delete
+    _title: 'Delete Product'
+  requirements:
+    _entity_access: 'product.delete'
+
+product.settings:
+  path: 'admin/structure/product'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\ProductSettingsForm'
+   _title: 'Product Settings'
+  requirements:
+    _permission: 'administer Product entity'
+
+# Photo routing definition
+entity.photo.canonical:
+  path: '/admin/photo/{photo}'
+  defaults:
+    _entity_view: 'photo'
+    _title: 'Photo Content'
+  requirements:
+    _entity_access: 'photo.view'
+
+entity.photo.collection:
+  path: '/admin/photo'
+  defaults:
+    _entity_list: 'photo'
+    _title: 'Photo List'
+  requirements:
+    _permission: 'view Photo entity'
+
+entity.photo.add_form:
+  path: '/admin/photo/add'
+  defaults:
+    _entity_form: photo.add
+    _title: 'Add Photo'
+  requirements:
+    _entity_create_access: 'photo'
+
+entity.photo.edit_form:
+  path: '/admin/photo/{photo}/edit'
+  defaults:
+    _entity_form: photo.edit
+    _title: 'Edit Photo'
+  requirements:
+    _entity_access: 'photo.edit'
+
+entity.photo.delete_form:
+  path: '/admin/photo/{photo}/delete'
+  defaults:
+    _entity_form: photo.delete
+    _title: 'Delete Photo'
+  requirements:
+    _entity_access: 'photo.delete'
+
+photo.settings:
+  path: 'admin/structure/photo'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\PhotoSettingsForm'
+   _title: 'Photo Settings'
+  requirements:
+    _permission: 'administer Photo entity'
+
+# Offer routing definition
+entity.offer.canonical:
+  path: '/admin/offer/{offer}'
+  defaults:
+    _entity_view: 'offer'
+    _title: 'Offer Content'
+  requirements:
+    _entity_access: 'offer.view'
+
+entity.offer.collection:
+  path: '/admin/offer'
+  defaults:
+    _entity_list: 'offer'
+    _title: 'Offer List'
+  requirements:
+    _permission: 'view Offer entity'
+
+entity.offer.add_form:
+  path: '/admin/offer/add'
+  defaults:
+    _entity_form: offer.add
+    _title: 'Add Offer'
+  requirements:
+    _entity_create_access: 'offer'
+
+entity.offer.edit_form:
+  path: '/admin/offer/{offer}/edit'
+  defaults:
+    _entity_form: offer.edit
+    _title: 'Edit Offer'
+  requirements:
+    _entity_access: 'offer.edit'
+
+entity.offer.delete_form:
+  path: '/admin/offer/{offer}/delete'
+  defaults:
+    _entity_form: offer.delete
+    _title: 'Delete Offer'
+  requirements:
+    _entity_access: 'offer.delete'
+
+offer.settings:
+  path: 'admin/structure/offer'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\OfferSettingsForm'
+   _title: 'Offer Settings'
+  requirements:
+    _permission: 'administer Offer entity'
+
+# Category routing definition
+entity.category.canonical:
+  path: '/admin/category/{category}'
+  defaults:
+    _entity_view: 'category'
+    _title: 'Category Content'
+  requirements:
+    _entity_access: 'category.view'
+
+entity.category.collection:
+  path: '/admin/category'
+  defaults:
+    _entity_list: 'category'
+    _title: 'Category List'
+  requirements:
+    _permission: 'view Category entity'
+
+entity.category.add_form:
+  path: '/admin/category/add'
+  defaults:
+    _entity_form: category.add
+    _title: 'Add Category'
+  requirements:
+    _entity_create_access: 'category'
+
+entity.category.edit_form:
+  path: '/admin/category/{category}/edit'
+  defaults:
+    _entity_form: category.edit
+    _title: 'Edit Category'
+  requirements:
+    _entity_access: 'category.edit'
+
+entity.category.delete_form:
+  path: '/admin/category/{category}/delete'
+  defaults:
+    _entity_form: category.delete
+    _title: 'Delete Category'
+  requirements:
+    _entity_access: 'category.delete'
+
+category.settings:
+  path: 'admin/structure/category'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\CategorySettingsForm'
+   _title: 'Category Settings'
+  requirements:
+    _permission: 'administer Category entity'
+
+# Presentation routing definition
+entity.presentation.canonical:
+  path: '/admin/presentation/{presentation}'
+  defaults:
+    _entity_view: 'presentation'
+    _title: 'Presentation Content'
+  requirements:
+    _entity_access: 'presentation.view'
+
+entity.presentation.collection:
+  path: '/admin/presentation'
+  defaults:
+    _entity_list: 'presentation'
+    _title: 'Presentation List'
+  requirements:
+    _permission: 'view Presentation entity'
+
+entity.presentation.add_form:
+  path: '/admin/presentation/add'
+  defaults:
+    _entity_form: presentation.add
+    _title: 'Add Presentation'
+  requirements:
+    _entity_create_access: 'presentation'
+
+entity.presentation.edit_form:
+  path: '/admin/presentation/{presentation}/edit'
+  defaults:
+    _entity_form: presentation.edit
+    _title: 'Edit Presentation'
+  requirements:
+    _entity_access: 'presentation.edit'
+
+entity.presentation.delete_form:
+  path: '/admin/presentation/{presentation}/delete'
+  defaults:
+    _entity_form: presentation.delete
+    _title: 'Delete Presentation'
+  requirements:
+    _entity_access: 'presentation.delete'
+
+presentation.settings:
+  path: 'admin/structure/presentation'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\PresentationSettingsForm'
+   _title: 'Presentation Settings'
+  requirements:
+    _permission: 'administer Presentation entity'
+
+# PoliticalDivision routing definition
+entity.political_division.canonical:
+  path: '/admin/political_division/{political_division}'
+  defaults:
+    _entity_view: 'political_division'
+    _title: 'PoliticalDivision Content'
+  requirements:
+    _entity_access: 'political_division.view'
+
+entity.political_division.collection:
+  path: '/admin/political_division'
+  defaults:
+    _entity_list: 'political_division'
+    _title: 'PoliticalDivision List'
+  requirements:
+    _permission: 'view PoliticalDivision entity'
+
+entity.political_division.add_form:
+  path: '/admin/political_division/add'
+  defaults:
+    _entity_form: political_division.add
+    _title: 'Add PoliticalDivision'
+  requirements:
+    _entity_create_access: 'political_division'
+
+entity.political_division.edit_form:
+  path: '/admin/political_division/{political_division}/edit'
+  defaults:
+    _entity_form: political_division.edit
+    _title: 'Edit PoliticalDivision'
+  requirements:
+    _entity_access: 'political_division.edit'
+
+entity.political_division.delete_form:
+  path: '/admin/political_division/{political_division}/delete'
+  defaults:
+    _entity_form: political_division.delete
+    _title: 'Delete PoliticalDivision'
+  requirements:
+    _entity_access: 'political_division.delete'
+
+political_division.settings:
+  path: 'admin/structure/political_division'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\PoliticalDivisionSettingsForm'
+   _title: 'PoliticalDivision Settings'
+  requirements:
+    _permission: 'administer PoliticalDivision entity'
+
+# Person routing definition
+entity.person.canonical:
+  path: '/admin/person/{person}'
+  defaults:
+    _entity_view: 'person'
+    _title: 'Person Content'
+  requirements:
+    _entity_access: 'person.view'
+
+entity.person.collection:
+  path: '/admin/person'
+  defaults:
+    _entity_list: 'person'
+    _title: 'Person List'
+  requirements:
+    _permission: 'view Person entity'
+
+entity.person.add_form:
+  path: '/admin/person/add'
+  defaults:
+    _entity_form: person.add
+    _title: 'Add Person'
+  requirements:
+    _entity_create_access: 'person'
+
+entity.person.edit_form:
+  path: '/admin/person/{person}/edit'
+  defaults:
+    _entity_form: person.edit
+    _title: 'Edit Person'
+  requirements:
+    _entity_access: 'person.edit'
+
+entity.person.delete_form:
+  path: '/admin/person/{person}/delete'
+  defaults:
+    _entity_form: person.delete
+    _title: 'Delete Person'
+  requirements:
+    _entity_access: 'person.delete'
+
+person.settings:
+  path: 'admin/structure/person'
+  defaults:
+   _form: '\Drupal\chajchu\Entity\Form\PersonSettingsForm'
+   _title: 'Person Settings'
+  requirements:
+    _permission: 'administer Person entity'
+

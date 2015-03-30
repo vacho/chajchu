@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains chajchu.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function chajchu_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the chajchu module.
+    case 'help.page.chajchu':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The chajchu functionalty module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function chajchu_theme() {
+  $theme = [];
+
+  return $theme;
+}

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file offer.html.twig
+ * Default theme implementation to present Offer data.
+ *
+ * This template is used when viewing a offer entity's page,
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_offer()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('offer') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

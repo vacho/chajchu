@@ -1,0 +1,6 @@
+name: chajchu
+type: module
+description: The chajchu functionalty module
+core: 8.x
+package: Chajchu
+
