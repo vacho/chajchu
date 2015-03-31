@@ -132,11 +132,11 @@ class Person extends ContentEntityBase implements PersonInterface {
       ->setDisplayOptions('view', array(
         'label' => 'hidden',
         'type' => 'author',
-        'weight' => 0,
+        'weight' => 50,
       ))
       ->setDisplayOptions('form', array(
         'type' => 'entity_reference_autocomplete',
-        'weight' => 5,
+        'weight' => 50,
         'settings' => array(
           'match_operator' => 'CONTAINS',
           'size' => '60',
@@ -146,7 +146,59 @@ class Person extends ContentEntityBase implements PersonInterface {
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
-
+    
+      $fields['user'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('User'))
+      ->setDescription(t('The user ID of the Person entity.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'user')
+      ->setSetting('handler', 'default')
+      ->setDefaultValueCallback('Drupal\node\Entity\Node::getCurrentUserId')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'author',
+          'weight' => -6,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -6,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+      
+    $fields['political_division'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Locality'))
+      ->setDescription(t('The locality.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'political_division')
+      ->setSetting('handler', 'default')
+      // ->setDefaultValueCallback('Drupal\node\Entity\Node::getCurrentUserId')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'political_division',
+          'weight' => -5,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -5,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
       ->setDescription(t('The name of the Person entity.'))
@@ -166,7 +218,108 @@ class Person extends ContentEntityBase implements PersonInterface {
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['gender'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Gender'))
+      ->setDescription(t('The gender of the Contact entity.'))
+      ->setSettings(array(
+          'allowed_values' => array(
+              'female' => 'female',
+              'male' => 'male',
+          ),
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -3,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'options_select',
+          'weight' => -3,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['photo'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Photo'))
+      ->setDescription(t('The photo.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 100,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -2,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => -2,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['phone'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Phone'))
+      ->setDescription(t('The phone.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 13,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -1,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => -1,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
+    $fields['cellphone'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Cellphone'))
+      ->setDescription(t('The cellphone.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 13,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 0,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 0,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+      
+    $fields['address'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Address'))
+      ->setDescription(t('The address.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 255,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 1,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 1,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+      
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))
       ->setDescription(t('The language code of Person entity.'));

@@ -146,6 +146,31 @@ class Offer extends ContentEntityBase implements OfferInterface {
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['product'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Product'))
+      ->setDescription(t('The ID of the parent.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'product')
+      ->setSetting('handler', 'default')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'product',
+          'weight' => -5,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -5,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
@@ -163,6 +188,33 @@ class Offer extends ContentEntityBase implements OfferInterface {
       ->setDisplayOptions('form', array(
         'type' => 'string_textfield',
         'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['price'] = BaseFieldDefinition::create('float')
+      ->setLabel(t('Price'))
+      ->setDescription(t('The price'))
+      ->setSettings(array(
+          'max_length' => 50,
+          'max' => 999999,
+          'min' => 1,
+          'prefix' => '',
+          'suffix' => '',
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'float',
+          'weight' => -3,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'float',
+          'weight' => -3,
+          'settings' => array(
+              'size' => 50,
+              'placeholder' => '_' . t('Value'),
+          ),
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);

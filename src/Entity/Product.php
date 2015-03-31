@@ -132,11 +132,11 @@ class Product extends ContentEntityBase implements ProductInterface {
       ->setDisplayOptions('view', array(
         'label' => 'hidden',
         'type' => 'author',
-        'weight' => 0,
+        'weight' => 50,
       ))
       ->setDisplayOptions('form', array(
         'type' => 'entity_reference_autocomplete',
-        'weight' => 5,
+        'weight' => 50,
         'settings' => array(
           'match_operator' => 'CONTAINS',
           'size' => '60',
@@ -147,6 +147,107 @@ class Product extends ContentEntityBase implements ProductInterface {
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
+    $fields['category'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Category'))
+      ->setDescription(t('The ID of the parent.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'category')
+      ->setSetting('handler', 'default')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'category',
+          'weight' => -9,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -9,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['person'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Person'))
+      ->setDescription(t('The ID of the parent.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'person')
+      ->setSetting('handler', 'default')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'person',
+          'weight' => -8,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -8,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['political_division'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Locality'))
+      ->setDescription(t('The locality.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'political_division')
+      ->setSetting('handler', 'default')
+      // ->setDefaultValueCallback('Drupal\node\Entity\Node::getCurrentUserId')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'political_division',
+          'weight' => -7,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -7,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['presentation'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Presentation'))
+      ->setDescription(t('The presentation.'))
+      ->setRevisionable(TRUE)
+      ->setSetting('target_type', 'presentation')
+      ->setSetting('handler', 'default')
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'hidden',
+          'type' => 'presentation',
+          'weight' => -6,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'entity_reference_autocomplete',
+          'weight' => -6,
+          'settings' => array(
+              'match_operator' => 'CONTAINS',
+              'size' => '60',
+              'autocomplete_type' => 'tags',
+              'placeholder' => '',
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+      
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
       ->setDescription(t('The name of the Product entity.'))
@@ -158,14 +259,220 @@ class Product extends ContentEntityBase implements ProductInterface {
       ->setDisplayOptions('view', array(
         'label' => 'above',
         'type' => 'string',
-        'weight' => -4,
+        'weight' => -5,
       ))
       ->setDisplayOptions('form', array(
         'type' => 'string_textfield',
-        'weight' => -4,
+        'weight' => -5,
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['type'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Type'))
+      ->setDescription(t('The type.'))
+      ->setSettings(array(
+          'allowed_values' => array(
+              'female' => t('Offer'),
+              'male' => t('Demand'),
+          ),
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'options_select',
+          'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+   
+    $fields['detail'] = BaseFieldDefinition::create('string_long')
+      ->setLabel(t('Detail'))
+      ->setDescription(t('The detail'))
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -3,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string',
+          'weight' => -3,
+          'settings' => array(
+              'size' => 60,
+              'placeholder' => '_' . t('Description'),
+          ),
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+   
+    $fields['email'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The email.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 100,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -2,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => -2,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['webpage'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Webpage'))
+      ->setDescription(t('The webpage.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 100,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => -1,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => -1,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    $fields['facebook'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Facebook'))
+      ->setDescription(t('The facebook.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 100,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 0,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 0,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+      
+    $fields['linkedin'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Linkedin'))
+      ->setDescription(t('The linkedin.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 100,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 1,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 1,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['twitter'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Twitter'))
+      ->setDescription(t('The twitter.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 100,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 2,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 2,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['phone'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Phone'))
+      ->setDescription(t('The phone.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 13,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 3,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 3,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['cellphone'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Cellphone'))
+      ->setDescription(t('The cellphone.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 13,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 4,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['address'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Address'))
+      ->setDescription(t('The address.'))
+      ->setSettings(array(
+          'default_value' => '',
+          'max_length' => 255,
+          'text_processing' => 0,
+      ))
+      ->setDisplayOptions('view', array(
+          'label' => 'above',
+          'type' => 'string',
+          'weight' => 5,
+      ))
+      ->setDisplayOptions('form', array(
+          'type' => 'string_textfield',
+          'weight' => 5,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+    
+    //ini datetimetime
+    $fields['expire'] = BaseFieldDefinition::create('timestamp')
+      ->setLabel(t('Expire'))
+      ->setDescription(t('The expire date.'));
 
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))

@@ -158,11 +158,11 @@ class Category extends ContentEntityBase implements CategoryInterface {
       ->setDisplayOptions('view', array(
       		'label' => 'hidden',
       		'type' => 'category',
-      		'weight' => 0,
+      		'weight' => -5,
       ))
       ->setDisplayOptions('form', array(
       		'type' => 'entity_reference_autocomplete',
-      		'weight' => -3,
+      		'weight' => -5,
       		'settings' => array(
       				'match_operator' => 'CONTAINS',
       				'size' => '60',
@@ -195,7 +195,8 @@ class Category extends ContentEntityBase implements CategoryInterface {
 
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))
-      ->setDescription(t('The language code of Category entity.'));
+      ->setDescription(t('The language code of Category entity.'))
+      ->setTranslatable(TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
