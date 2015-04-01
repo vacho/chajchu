@@ -6,6 +6,9 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Session\AccountInterface;
+
 
 /**
  * Implements hook_help().
@@ -30,4 +33,46 @@ function chajchu_theme() {
   $theme = [];
 
   return $theme;
+}
+
+
+/**
+ * Implements hook_block_access().
+ */
+
+function chajchu_block_access(Block $block, $operation, AccountInterface $account, $langcode) {
+
+  print_r($block);
+  if($block->id == "bartik_account_menu") {
+    $block->set('region', 'secondary_menu');
+    $block->set('weight', '2');
+    $block->save();
+  }
+
+  if($block->id == "bartik_help") {
+    $block->disable();
+    $block->save();
+  }
+
+  if($block->id == "chajchu_breadcrumbs") {
+    $block->disable();
+    $block->save();
+  }
+
+  if($block->id == "chajchu_search") {
+    $block->disable();
+    $block->save();
+  }
+
+  if($block->id == "chajchu_tools") {
+    $block->disable();
+    $block->save();
+  }
+
+  if($block->id == "seven_login") {
+    $block->disable();
+    $block->save();
+  }
+
+  return;
 }
