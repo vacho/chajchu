@@ -42,34 +42,41 @@ function chajchu_theme() {
 
 function chajchu_block_access(Block $block, $operation, AccountInterface $account, $langcode) {
 
-  print_r($block);
-  if($block->id == "bartik_account_menu") {
-    $block->set('region', 'secondary_menu');
-    $block->set('weight', '2');
+  //print_r($block->getPluginId());
+  //print_r("<br>");
+  
+  if($block->getPluginId() == "system_menu_block:account") {
+    $block->setRegion('sidebar_second');
+    $block->setWeight('2');
     $block->save();
   }
 
-  if($block->id == "bartik_help") {
+  if($block->getPluginId() == "system_menu_block:main") {
     $block->disable();
     $block->save();
   }
 
-  if($block->id == "chajchu_breadcrumbs") {
+  if($block->getPluginId() == "system_breadcrumb_block") {
     $block->disable();
     $block->save();
   }
 
-  if($block->id == "chajchu_search") {
+  if($block->getPluginId() == "help_block") {
     $block->disable();
     $block->save();
   }
 
-  if($block->id == "chajchu_tools") {
+  if($block->getPluginId() == "user_login_block") {
     $block->disable();
     $block->save();
   }
 
-  if($block->id == "seven_login") {
+  if($block->getPluginId() == "search_form_block") {
+    $block->disable();
+    $block->save();
+  }
+  
+  if($block->getPluginId() == "system_menu_block:tools") {
     $block->disable();
     $block->save();
   }

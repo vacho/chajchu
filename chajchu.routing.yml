@@ -341,3 +341,10 @@ person.settings:
   requirements:
     _permission: 'administer Person entity'
 
+chajchu.searcher:
+  path: '/search'
+  defaults:
+    _form: '\Drupal\chajchu\Form\Searcher'
+    _title: 'Searcher'
+  requirements:
+    _permission: 'search_products_services'
