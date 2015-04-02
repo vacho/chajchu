@@ -80,6 +80,11 @@ function chajchu_block_access(Block $block, $operation, AccountInterface $accoun
     $block->disable();
     $block->save();
   }
+  
+  if($block->getPluginId() == "system_menu_block:footer") {
+    $block->disable();
+    $block->save();
+  }
 
   return;
 }

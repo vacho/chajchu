@@ -273,8 +273,8 @@ class Product extends ContentEntityBase implements ProductInterface {
       ->setDescription(t('The type.'))
       ->setSettings(array(
           'allowed_values' => array(
-              'female' => t('Offer'),
-              'male' => t('Demand'),
+              'Offer' => t('Offer'),
+              'Demand' => t('Demand'),
           ),
       ))
       ->setDisplayOptions('view', array(
