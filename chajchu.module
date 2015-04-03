@@ -39,7 +39,7 @@ function chajchu_theme() {
 /**
  * Implements hook_block_access().
  */
-
+/*
 function chajchu_block_access(Block $block, $operation, AccountInterface $account, $langcode) {
 
   //print_r($block->getPluginId());
@@ -87,4 +87,4 @@ function chajchu_block_access(Block $block, $operation, AccountInterface $accoun
   }
 
   return;
-}
+}*/
