@@ -72,7 +72,7 @@ class Searcher extends FormBase {
     $form['left']['forSearch'] = array(
         '#markup' => 
         "<div id='searching'><div id='left'><div id='searched'><div id='searched_0'>" 
-          . t("Please search a producto o service...") .
+          . t("Please search a product o service...") .
         "</div></div></div>",
         '#weight' => 4,
     );
