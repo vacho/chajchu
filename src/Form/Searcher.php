@@ -35,7 +35,7 @@ class Searcher extends FormBase {
     $form['top']['need'] = array(
         '#type' => 'textfield',
         '#description' => $this->t(''),
-        '#default_value' => "Desarrollo web",
+        '#default_value' => "",
         '#attributes' => array(
             'placeholder' => '_' . $this->t('What do you need?'),
         ),
