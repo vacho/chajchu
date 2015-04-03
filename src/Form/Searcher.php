@@ -111,7 +111,7 @@ class Searcher extends FormBase {
     $form['right']['forAdsense'] = array(
         '#markup' =>
         "<div id='adsense'>"
-        . t("Publicity") .
+        . t("Space reserved for advertising") .
         "</div></div></div>",
         '#weight' => 6,
     );
