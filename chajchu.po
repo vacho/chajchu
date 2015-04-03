@@ -1,0 +1,37 @@
+# CHAJCHU TRANLSATES FROM ENGLISH TO SPANISH.
+# Copyright (C) 2015 THE PACKAGE'S COPYRIGHT HOLDER
+# Author:vacho <vacho@koala-soft.com>, 2015.
+
+#Front searcher
+msgid "What do you need?"
+msgstr "Qué necesitas?"
+
+msgid "Offer"
+msgstr "Oferta"
+
+msgid "Demand"
+msgstr "Demanda"
+
+msgid "Please search a product o service..."
+msgstr "Por favor busque un producto o servicio"
+
+msgid "Space reserved for advertising"
+msgstr "Espacio reservado para publicidad"
+
+msgid "Search empty..."
+msgstr "Busqueda sin resultados..."
+
+msgid "Phone"
+msgstr "Teléfono"
+
+msgid "Cellphone"
+msgstr "Celular"
+
+msgid "Email"
+msgstr "Correo"
+
+msgid "Webpage"
+msgstr "Sitio web"
+
+msgid "Address"
+msgstr "Dirección"
