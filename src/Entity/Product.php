@@ -203,7 +203,7 @@ class Product extends ContentEntityBase implements ProductInterface {
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'political_division')
       ->setSetting('handler', 'default')
-      // ->setDefaultValueCallback('Drupal\node\Entity\Node::getCurrentUserId')
+      ->setDefaultValue(array(2)) //Cochabamba
       ->setTranslatable(TRUE)
       ->setDisplayOptions('view', array(
           'label' => 'hidden',
@@ -229,6 +229,7 @@ class Product extends ContentEntityBase implements ProductInterface {
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'presentation')
       ->setSetting('handler', 'default')
+      ->setDefaultValue(array(1)) //Normal
       ->setTranslatable(TRUE)
       ->setDisplayOptions('view', array(
           'label' => 'hidden',
