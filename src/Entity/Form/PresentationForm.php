@@ -62,7 +62,8 @@ class PresentationForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.presentation.edit_form', ['presentation' => $entity->id()]);
+    //$form_state->setRedirect('entity.presentation.edit_form', ['presentation' => $entity->id()]);
+    $form_state->setRedirect('entity.presentation.collection');
   }
 
 }

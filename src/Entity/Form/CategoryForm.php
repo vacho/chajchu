@@ -62,7 +62,8 @@ class CategoryForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.category.edit_form', ['category' => $entity->id()]);
+    //$form_state->setRedirect('entity.category.edit_form', ['category' => $entity->id()]);
+    $form_state->setRedirect('entity.category.collection');
   }
 
 }

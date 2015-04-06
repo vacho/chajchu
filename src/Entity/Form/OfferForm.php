@@ -62,7 +62,8 @@ class OfferForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.offer.edit_form', ['offer' => $entity->id()]);
+    //$form_state->setRedirect('entity.offer.edit_form', ['offer' => $entity->id()]);
+    $form_state->setRedirect('entity.offer.collection');
   }
 
 }

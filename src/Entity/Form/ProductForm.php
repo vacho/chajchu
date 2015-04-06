@@ -62,7 +62,8 @@ class ProductForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.product.edit_form', ['product' => $entity->id()]);
+    //$form_state->setRedirect('entity.product.edit_form', ['product' => $entity->id()]);
+    $form_state->setRedirect('entity.product.collection');
   }
 
 }

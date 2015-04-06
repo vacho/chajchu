@@ -62,7 +62,8 @@ class PhotoForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.photo.edit_form', ['photo' => $entity->id()]);
+    //$form_state->setRedirect('entity.photo.edit_form', ['photo' => $entity->id()]);
+    $form_state->setRedirect('entity.photo.collection');
   }
 
 }

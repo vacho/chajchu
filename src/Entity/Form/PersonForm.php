@@ -62,7 +62,8 @@ class PersonForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.person.edit_form', ['person' => $entity->id()]);
+    //$form_state->setRedirect('entity.person.edit_form', ['person' => $entity->id()]);
+    $form_state->setRedirect('entity.person.collection');
   }
 
 }

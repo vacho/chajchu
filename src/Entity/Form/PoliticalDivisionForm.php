@@ -62,7 +62,8 @@ class PoliticalDivisionForm extends ContentEntityForm {
         '%label' => $entity->label(),
       )));
     }
-    $form_state->setRedirect('entity.political_division.edit_form', ['political_division' => $entity->id()]);
+    //$form_state->setRedirect('entity.political_division.edit_form', ['political_division' => $entity->id()]);
+    $form_state->setRedirect('entity.political_division.collection');
   }
 
 }
