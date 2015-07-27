@@ -13,6 +13,7 @@ use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Url;
 use Drupal\chajchu\Entity\Product;
 use Drupal\chajchu\Entity\Category;
+use Drupal\Component\Utility\SafeMarkup;
 
 /**
  * Class Searcher.
@@ -31,16 +32,36 @@ class Searcher extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    
+    $result = db_query('SELECT name FROM {product}');
+
+    // $option="";
+    // $rec="";
+    //drupal_set_message($result);
+    $auto = array();
+    $num = 0;
+    $markup = "<script type='text/javascript'>";
+    foreach ($result as $record) {
+      $auto[$num]=$record->name;
+      $markup+="var autocompletar.push('".$record->name."');";
+      $num++;
+    }
+    $markup = "</script>";
+    /*$markup = "<script type='text/javascript'>var arrayJS=<?php echo json_encode($auto);?>;</script>";*/
+    //drupal_set_message($rec);
+    //print_r($auto);
     $form['top']['need'] = array(
         '#type' => 'textfield',
         '#description' => $this->t(''),
         '#default_value' => "",
         '#attributes' => array(
             'placeholder' => '_' . $this->t('What do you need?'),
+            'id' => 'busqueda',
+            
         ),
         '#weight' => 1,
         '#prefix' => "<div id='search'><div id='search-content'>",
+        //'#markup' => "<datalist id='produc'>".$option."</datalist>",
+        '#markup' => SafeMarkup::set($markup),
     );
     
     $form['top']['offer'] = array(

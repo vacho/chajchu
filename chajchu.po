@@ -6,6 +6,9 @@
 msgid "What do you need?"
 msgstr "Qué necesitas?"
 
+msgid "_What do you need?"
+msgstr "_Qué necesitas?"
+
 msgid "Offer"
 msgstr "Oferta"
 

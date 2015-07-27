@@ -35,7 +35,12 @@ function chajchu_theme() {
   return $theme;
 }
 
-
+/**
+*  Implements hook_page_attachments().
+*/
+function chajchu_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'chajchu/buscador';
+}
 /**
  * Implements hook_block_access().
  */

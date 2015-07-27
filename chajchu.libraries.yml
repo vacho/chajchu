@@ -1,0 +1,6 @@
+buscador:
+  version: 1.x
+  js:
+    js/buscador.js: {}
+    dependencies:
+      -core/jquery
