@@ -50,9 +50,6 @@ class Searcher extends FormBase {
     $num3=rand(0,$num-1);
     $num4=rand(0,$num-1);
     $num5=rand(0,$num-1);
-    //drupal_set_message("".$num2);
-    //$result2 = db_query('SELECT * FROM {product} WHERE name = $auto[$num1] AND name = $auto[$num2] AND name = $auto[$num3] AND name = $auto[$num4] AND name = $auto[$num5]');
-    //var autocompletar = new Array(' " . implode(" ',' ", $auto) . " ');
     $markup = "<script type='text/javascript'>
                   var arreglo = new Array('hola','mundo','borrar comillas');
                </script>";
@@ -104,15 +101,6 @@ class Searcher extends FormBase {
         '#suffix' => "</div></div>",
         
     );
-    
-    /*$form['left']['forSearch'] = array(
-        '#markup' => 
-        "<div id='searching'><div id='left'><div id='searched'><div id='searched_0'>" 
-          . t("Please search a product o service...") .
-        "</div></div></div>",
-        '#weight' => 4,
-    );*/
-    
 
      $form['left']['searched'] = array(
         '#markup' => "<div id='left'><div id='searching'><div id='searched'>",
@@ -140,11 +128,10 @@ class Searcher extends FormBase {
           " . $address . "
           </div>",
       );
-      //drupal_set_message("$name $phone $cellphone $email $webpage $address");
       $i++;
       }
       $cont++;
-      //echo $cont;
+      
     }   
     $form['left']['searched_end'] = array(
         '#markup' => "</div></div></div>",
