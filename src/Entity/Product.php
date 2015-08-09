@@ -44,10 +44,10 @@ use Drupal\user\UserInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "entity.product.canonical",
- *     "edit-form" = "entity.product.edit_form",
- *     "delete-form" = "entity.product.delete_form",
- *     "collection" = "entity.product.collection"
+ *     "canonical" = "/entity.product.canonical",
+ *     "edit-form" = "/entity.product.edit_form",
+ *     "delete-form" = "/entity.product.delete_form",
+ *     "collection" = "/entity.product.collection"
  *   },
  *   field_ui_base_route = "product.settings"
  * )

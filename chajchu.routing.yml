@@ -40,7 +40,7 @@ entity.product.delete_form:
     _entity_access: 'product.delete'
 
 product.settings:
-  path: 'admin/structure/product'
+  path: '/admin/structure/product'
   defaults:
    _form: '\Drupal\chajchu\Entity\Form\ProductSettingsForm'
    _title: 'Product Settings'
@@ -89,7 +89,7 @@ entity.photo.delete_form:
     _entity_access: 'photo.delete'
 
 photo.settings:
-  path: 'admin/structure/photo'
+  path: '/admin/structure/photo'
   defaults:
    _form: '\Drupal\chajchu\Entity\Form\PhotoSettingsForm'
    _title: 'Photo Settings'
@@ -138,7 +138,7 @@ entity.offer.delete_form:
     _entity_access: 'offer.delete'
 
 offer.settings:
-  path: 'admin/structure/offer'
+  path: '/admin/structure/offer'
   defaults:
    _form: '\Drupal\chajchu\Entity\Form\OfferSettingsForm'
    _title: 'Offer Settings'
@@ -187,7 +187,7 @@ entity.category.delete_form:
     _entity_access: 'category.delete'
 
 category.settings:
-  path: 'admin/structure/category'
+  path: '/admin/structure/category'
   defaults:
    _form: '\Drupal\chajchu\Entity\Form\CategorySettingsForm'
    _title: 'Category Settings'
@@ -285,7 +285,7 @@ entity.political_division.delete_form:
     _entity_access: 'political_division.delete'
 
 political_division.settings:
-  path: 'admin/structure/political_division'
+  path: '/admin/structure/political_division'
   defaults:
    _form: '\Drupal\chajchu\Entity\Form\PoliticalDivisionSettingsForm'
    _title: 'PoliticalDivision Settings'
@@ -334,7 +334,7 @@ entity.person.delete_form:
     _entity_access: 'person.delete'
 
 person.settings:
-  path: 'admin/structure/person'
+  path: '/admin/structure/person'
   defaults:
    _form: '\Drupal\chajchu\Entity\Form\PersonSettingsForm'
    _title: 'Person Settings'

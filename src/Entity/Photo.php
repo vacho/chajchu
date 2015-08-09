@@ -44,10 +44,10 @@ use Drupal\user\UserInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "entity.photo.canonical",
- *     "edit-form" = "entity.photo.edit_form",
- *     "delete-form" = "entity.photo.delete_form",
- *     "collection" = "entity.photo.collection"
+ *     "canonical" = "/entity.photo.canonical",
+ *     "edit-form" = "/entity.photo.edit_form",
+ *     "delete-form" = "/entity.photo.delete_form",
+ *     "collection" = "/entity.photo.collection"
  *   },
  *   field_ui_base_route = "photo.settings"
  * )

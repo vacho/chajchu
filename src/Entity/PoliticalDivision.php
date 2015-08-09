@@ -44,10 +44,10 @@ use Drupal\user\UserInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "entity.political_division.canonical",
- *     "edit-form" = "entity.political_division.edit_form",
- *     "delete-form" = "entity.political_division.delete_form",
- *     "collection" = "entity.political_division.collection"
+ *     "canonical" = "/entity.political_division.canonical",
+ *     "edit-form" = "/entity.political_division.edit_form",
+ *     "delete-form" = "/entity.political_division.delete_form",
+ *     "collection" = "/entity.political_division.collection"
  *   },
  *   field_ui_base_route = "political_division.settings"
  * )
