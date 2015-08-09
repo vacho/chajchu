@@ -32,23 +32,38 @@ class Searcher extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $result = db_query('SELECT name FROM {product}');
-
+    $result = db_query('SELECT * FROM {product}');
     // $option="";
     // $rec="";
     //drupal_set_message($result);
     $auto = array();
     $num = 0;
-    $markup = "<script type='text/javascript'>";
+    //$markup = "<script>";
     foreach ($result as $record) {
       $auto[$num]=$record->name;
-      $markup+="var autocompletar.push('".$record->name."');";
+      /*$markup+="autocompletar.push('<?php echo $record->name; ?>');";
+      $markup+="console.log(' '+autocompletar[<?php echo $num; ?>]);";*/
       $num++;
     }
-    $markup = "</script>";
+    $num1=rand(0,$num-1);
+    $num2=rand(0,$num-1);
+    $num3=rand(0,$num-1);
+    $num4=rand(0,$num-1);
+    $num5=rand(0,$num-1);
+    //drupal_set_message("".$num2);
+    //$result2 = db_query('SELECT * FROM {product} WHERE name = $auto[$num1] AND name = $auto[$num2] AND name = $auto[$num3] AND name = $auto[$num4] AND name = $auto[$num5]');
+    //var autocompletar = new Array(' " . implode(" ',' ", $auto) . " ');
+    $markup = "<script type='text/javascript'>
+                  var arreglo = new Array('hola','mundo','borrar comillas');
+               </script>";
+    //$markup += "</script>";
     /*$markup = "<script type='text/javascript'>var arrayJS=<?php echo json_encode($auto);?>;</script>";*/
-    //drupal_set_message($rec);
+    //drupal_set_message($markup);
     //print_r($auto);
+     $form['script'] = array(
+      '#markup' => SafeMarkup::set($markup),
+    );
+
     $form['top']['need'] = array(
         '#type' => 'textfield',
         '#description' => $this->t(''),
@@ -56,12 +71,12 @@ class Searcher extends FormBase {
         '#attributes' => array(
             'placeholder' => '_' . $this->t('What do you need?'),
             'id' => 'busqueda',
-            
+            //'onchange' => 'autocompletado(arreglo);',
         ),
         '#weight' => 1,
         '#prefix' => "<div id='search'><div id='search-content'>",
         //'#markup' => "<datalist id='produc'>".$option."</datalist>",
-        '#markup' => SafeMarkup::set($markup),
+        //'#markup' => SafeMarkup::set($markup),
     );
     
     $form['top']['offer'] = array(
@@ -90,14 +105,51 @@ class Searcher extends FormBase {
         
     );
     
-    $form['left']['forSearch'] = array(
+    /*$form['left']['forSearch'] = array(
         '#markup' => 
         "<div id='searching'><div id='left'><div id='searched'><div id='searched_0'>" 
           . t("Please search a product o service...") .
         "</div></div></div>",
         '#weight' => 4,
-    );
+    );*/
     
+
+     $form['left']['searched'] = array(
+        '#markup' => "<div id='left'><div id='searching'><div id='searched'>",
+    );
+    $cont = 0;
+    $i = 0;
+    $result = db_query('SELECT * FROM {product}');
+    foreach ($result as $record) {
+    if($cont == $num1 || $cont == $num2 || $cont == $num3 || $cont == $num4 || $cont == $num5) {
+      $name = ($record->name != '' ? "<h2>" . $record->name . "</h2>" : "");
+      $phone = ($record->phone != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $record->phone . "</p>" : "");
+      $cellphone = ($record->cellphone != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $record->cellphone . "</p>" : "");
+      $email = ($record->email != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $record->email . "</p>" : "");
+      $webpage = ($record->webpage != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $record->webpage . "</p>" : "");
+      $address = ($record->address != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $record->address . "</p>" : "");
+      
+      $form['left']['newContent_'.$i] = array(
+          '#markup' => "
+          <div id='searched_" . $i . "'>
+          " . $name . "
+          " . $phone . "
+          " . $cellphone . "
+          " . $email . "
+          " . $webpage . "
+          " . $address . "
+          </div>",
+      );
+      //drupal_set_message("$name $phone $cellphone $email $webpage $address");
+      $i++;
+      }
+      $cont++;
+      //echo $cont;
+    }   
+    $form['left']['searched_end'] = array(
+        '#markup' => "</div></div></div>",
+    );
+
     /*
      * TAGS
      */
@@ -136,7 +188,10 @@ class Searcher extends FormBase {
         "</div></div></div>",
         '#weight' => 6,
     );
-    
+/*
+     $form['#attached']['js'] = array(
+      drupal_get_path('module', 'chajchu') . '/js/buscador.js'
+    );*/
     return $form;
   }
 
