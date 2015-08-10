@@ -39,7 +39,7 @@ class Searcher extends FormBase {
     $form['#attached']['library'][] = 'chajchu/searcher';
     $form['#attached']['library'][] = 'chajchu/awesomplete';
 
-    $result = db_query('SELECT * FROM {product}');
+    $result = db_query('SELECT DISTINCT (name) FROM {product}');
     $auto = array();
     $num = 0;
     $services = "";
