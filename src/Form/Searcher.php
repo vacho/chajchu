@@ -50,12 +50,6 @@ class Searcher extends FormBase {
       $num++;
     }
 
-    $num1 = rand(0, $num - 1);
-    $num2 = rand(0, $num - 1);
-    $num3 = rand(0, $num - 1);
-    $num4 = rand(0, $num - 1);
-    $num5 = rand(0, $num - 1);
-
     $form['top']['need'] = array(
       '#type' => 'textfield',
       '#description' => $this->t(''),
@@ -101,6 +95,14 @@ class Searcher extends FormBase {
     $form['left']['searched'] = array(
       '#markup' => "<div id='left'><div id='searching'><div id='searched'>",
     );
+
+    // To autosearched
+    $num1 = rand(0, $num - 1);
+    $num2 = rand(0, $num - 1);
+    $num3 = rand(0, $num - 1);
+    $num4 = rand(0, $num - 1);
+    $num5 = rand(0, $num - 1);
+
     $cont = 0;
     $i = 0;
     $result = db_query('SELECT * FROM {product}');
@@ -193,6 +195,8 @@ class Searcher extends FormBase {
   public function viewSearch(array &$form, FormStateInterface $form_state) {
     $searched = $form_state->getValue('need');
     $operation = $form_state->getValue('op');
+
+    if ($operation == "Oferta") $operation = "Offer";
 
     $idsEntities = \Drupal::entityQuery('product')
       ->condition('name', $searched, 'CONTAINS')
