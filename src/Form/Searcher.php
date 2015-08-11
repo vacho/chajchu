@@ -128,25 +128,33 @@ class Searcher extends FormBase {
     $idsEntities = \Drupal::entityQuery('category')
       ->execute();
     $entities = Category::loadMultiple($idsEntities);
-    $limit = 6;
+    $limit = 16;
+    $i = 0;
     $categories = "<div id='tags'>";
     foreach ($entities as $entity) {
-      $weight = rand(1, 8);
+      $weight = rand(1, 7);
       if ($limit <= 0) {
         break;
       }
       else {
-        $categories .= "<span class='weight_" . $weight . "'>" . $entity->get('name')->value . "</span>";
+        if ($i % 2 == 0){
+          $endLine = "<br>";
+        }else {
+          $endLine = "";
+        }
+        $categories .= "<span class='weight_" . $weight . "'>" . $entity->get('name')->value . "</span>" . $endLine;
         $limit--;
       }
+      $i++;
     }
     $categories .= "</div>";
 
     $form['right']['forTags'] = array(
       '#markup' =>
-        "<div id='right'><div id='tags'>"
-        . $categories .
-        "</div>",
+        "<div id='right'>
+            <div id='tags'>"
+            . $categories .
+        "   </div>",
       '#weight' => 5,
     );
 
