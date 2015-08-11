@@ -39,15 +39,10 @@ class Searcher extends FormBase {
     $form['#attached']['library'][] = 'chajchu/searcher';
     $form['#attached']['library'][] = 'chajchu/awesomplete';
 
-    $result = db_query('SELECT DISTINCT (name) FROM {product}');
-    $auto = array();
-    $num = 0;
+    $result = db_query('SELECT DISTINCT(name) FROM {product}');
     $services = "";
-    //$markup = "<script>";
     foreach ($result as $record) {
-      $auto[$num] = $record->name;
       $services = $record->name . ", " . $services;
-      $num++;
     }
 
     $form['top']['need'] = array(
@@ -96,39 +91,31 @@ class Searcher extends FormBase {
       '#markup' => "<div id='left'><div id='searching'><div id='searched'>",
     );
 
-    // To autosearched
-    $num1 = rand(0, $num - 1);
-    $num2 = rand(0, $num - 1);
-    $num3 = rand(0, $num - 1);
-    $num4 = rand(0, $num - 1);
-    $num5 = rand(0, $num - 1);
-
-    $cont = 0;
-    $i = 0;
-    $result = db_query('SELECT * FROM {product}');
+    $i = 1;
+    //@Todo dinamic random number of products
+    $result = db_query(
+      'SELECT * FROM {product} ORDER BY RAND() LIMIT 8'
+    );
     foreach ($result as $record) {
-      if ($cont == $num1 || $cont == $num2 || $cont == $num3 || $cont == $num4 || $cont == $num5) {
-        $name = ($record->name != '' ? "<h2>" . $record->name . "</h2>" : "");
-        $phone = ($record->phone != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $record->phone . "</p>" : "");
-        $cellphone = ($record->cellphone != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $record->cellphone . "</p>" : "");
-        $email = ($record->email != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $record->email . "</p>" : "");
-        $webpage = ($record->webpage != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $record->webpage . "</p>" : "");
-        $address = ($record->address != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $record->address . "</p>" : "");
+      $name = ($record->name != '' ? "<h2>" . $record->name . "</h2>" : "");
+      $phone = ($record->phone != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $record->phone . "</p>" : "");
+      $cellphone = ($record->cellphone != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $record->cellphone . "</p>" : "");
+      $email = ($record->email != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $record->email . "</p>" : "");
+      $webpage = ($record->webpage != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $record->webpage . "</p>" : "");
+      $address = ($record->address != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $record->address . "</p>" : "");
 
-        $form['left']['newContent_' . $i] = array(
-          '#markup' => "
-            <div id='searched_" . $i . "'>
-            " . $name . "
-            " . $phone . "
-            " . $cellphone . "
-            " . $email . "
-            " . $webpage . "
-            " . $address . "
-            </div>",
-        );
-        $i++;
-      }
-      $cont++;
+      $form['left']['newContent_' . $i] = array(
+        '#markup' => "
+          <div id='searched_" . $i . "'>
+          " . $name . "
+          " . $phone . "
+          " . $cellphone . "
+          " . $email . "
+          " . $webpage . "
+          " . $address . "
+          </div>",
+      );
+      $i++;
     }
 
     $form['left']['searched_end'] = array(
