@@ -1,2 +1,5 @@
 search_products_services:
   title: 'Search products or services'
+
+product.view:
+  title: 'View products detail'

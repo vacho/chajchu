@@ -1,11 +1,11 @@
 # Product routing definition
 entity.product.canonical:
-  path: '/admin/product/{product}'
+  path: '/product/{product}'
   defaults:
     _entity_view: 'product'
     _title: 'Product Content'
   requirements:
-    _entity_access: 'product.view'
+    _permission: product.view
 
 entity.product.collection:
   path: '/admin/product'

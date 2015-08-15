@@ -97,6 +97,7 @@ class Searcher extends FormBase {
       'SELECT * FROM {product} ORDER BY RAND() LIMIT 8'
     );
     foreach ($result as $record) {
+      $id = $record->id;
       $name = ($record->name != '' ? "<h2>" . $record->name . "</h2>" : "");
       $phone = ($record->phone != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $record->phone . "</p>" : "");
       $cellphone = ($record->cellphone != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $record->cellphone . "</p>" : "");
@@ -107,7 +108,7 @@ class Searcher extends FormBase {
       $form['left']['newContent_' . $i] = array(
         '#markup' => "
           <div id='searched_" . $i . "'>
-          " . $name . "
+          <a href='product/" . $id . "' >" . $name . " </a>
           " . $phone . "
           " . $cellphone . "
           " . $email . "
@@ -213,6 +214,7 @@ class Searcher extends FormBase {
       );
     }
     foreach ($entities as $entity) {
+      $id = $entity->getId();
       $name = ($entity->get('name')->value != '' ? "<h2>" . $entity->get('name')->value . "</h2>" : "");
       $phone = ($entity->get('phone')->value != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $entity->get('phone')->value . "</p>" : "");
       $cellphone = ($entity->get('cellphone')->value != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $entity->get('cellphone')->value . "</p>" : "");
@@ -223,7 +225,7 @@ class Searcher extends FormBase {
       $formres['newContent_' . $i] = array(
         '#markup' => "
           <div id='searched_" . $i . "'>
-          " . $name . "
+          <a href='product/" . $id . "'>" . $name . " </a>
           " . $phone . "
           " . $cellphone . "
           " . $email . "
