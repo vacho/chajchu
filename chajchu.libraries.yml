@@ -2,8 +2,8 @@ searcher:
   version: 1.x
   js:
     js/searcher.js: {}
-    dependencies:
-      -core/jquery
+  dependencies:
+      - core/jquery
 
 awesomplete:
   version: 1.x
