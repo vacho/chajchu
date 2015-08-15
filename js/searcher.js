@@ -1,6 +1,6 @@
 (function ($) {
     $(document).ready(function () {
-        //alert($("div[role*='contentinfo']").text);
+        //@todo remove this and solve
         if ($(".messages").html().trim() == "") {
             $(".messages").css("display", "none");
         }
