@@ -1,5 +1,8 @@
 (function ($) {
     $(document).ready(function () {
-        //use this for aditional js efects
+        //alert($("div[role*='contentinfo']").text);
+        if ($(".messages").html().trim() == "") {
+            $(".messages").css("display", "none");
+        }
     });
 })(jQuery);

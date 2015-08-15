@@ -63,7 +63,7 @@ class Searcher extends FormBase {
         'data-list' => $services,
       ),
       '#weight' => 1,
-      '#maxlength' => 255,
+      '#maxlength' => 700,
       '#prefix' => "<div id='search'><div id='search-content'>",
     );
 
