@@ -63,12 +63,14 @@ class Product extends ContentEntityBase implements ProductInterface {
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getId() {
     return $this->get('id')->value;
   }
+
+  public function getType() {
+    return $this->get('type')->value;
+  }
+
   /**
    * {@inheritdoc}
    */

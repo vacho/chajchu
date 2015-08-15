@@ -44,6 +44,11 @@ class Searcher extends FormBase {
     foreach ($result as $record) {
       $services = $record->name . ", " . $services;
     }
+    $result = db_query('SELECT DISTINCT(detail) FROM {product}');
+    foreach ($result as $record) {
+      if (strpos($services, $record->detail) === false)
+        $services = $record->detail . ", " . $services;
+    }
 
     $form['top']['need'] = array(
       '#type' => 'textfield',
@@ -58,6 +63,7 @@ class Searcher extends FormBase {
         'data-list' => $services,
       ),
       '#weight' => 1,
+      '#maxlength' => 255,
       '#prefix' => "<div id='search'><div id='search-content'>",
     );
 
@@ -194,9 +200,9 @@ class Searcher extends FormBase {
 
     if ($operation == "Oferta") $operation = "Offer";
 
-    $idsEntities = \Drupal::entityQuery('product')
+    $idsEntities = \Drupal::entityQuery('product', 'OR')
       ->condition('name', $searched, 'CONTAINS')
-      ->condition('type', $operation, '=')
+      ->condition('detail', $searched, 'CONTAINS')
       ->execute();
     $entities = Product::loadMultiple($idsEntities);
     $i = 0;
@@ -214,16 +220,17 @@ class Searcher extends FormBase {
       );
     }
     foreach ($entities as $entity) {
-      $id = $entity->getId();
-      $name = ($entity->get('name')->value != '' ? "<h2>" . $entity->get('name')->value . "</h2>" : "");
-      $phone = ($entity->get('phone')->value != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $entity->get('phone')->value . "</p>" : "");
-      $cellphone = ($entity->get('cellphone')->value != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $entity->get('cellphone')->value . "</p>" : "");
-      $email = ($entity->get('email')->value != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $entity->get('email')->value . "</p>" : "");
-      $webpage = ($entity->get('webpage')->value != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $entity->get('webpage')->value . "</p>" : "");
-      $address = ($entity->get('address')->value != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $entity->get('address')->value . "</p>" : "");
+      if ($entity->getType() == $operation) {
+        $id = $entity->getId();
+        $name = ($entity->get('name')->value != '' ? "<h2>" . $entity->get('name')->value . "</h2>" : "");
+        $phone = ($entity->get('phone')->value != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $entity->get('phone')->value . "</p>" : "");
+        $cellphone = ($entity->get('cellphone')->value != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $entity->get('cellphone')->value . "</p>" : "");
+        $email = ($entity->get('email')->value != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $entity->get('email')->value . "</p>" : "");
+        $webpage = ($entity->get('webpage')->value != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $entity->get('webpage')->value . "</p>" : "");
+        $address = ($entity->get('address')->value != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $entity->get('address')->value . "</p>" : "");
 
-      $formres['newContent_' . $i] = array(
-        '#markup' => "
+        $formres['newContent_' . $i] = array(
+          '#markup' => "
           <div id='searched_" . $i . "'>
           <a href='product/" . $id . "'>" . $name . " </a>
           " . $phone . "
@@ -232,10 +239,9 @@ class Searcher extends FormBase {
           " . $webpage . "
           " . $address . "
           </div>",
-      );
-
-      $i++;
-
+        );
+        $i++;
+      }
     }
     $formres['searched_end'] = array(
       '#markup' => "</div>",
