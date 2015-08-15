@@ -98,17 +98,29 @@ class Searcher extends FormBase {
     );
 
     $i = 1;
-    //@Todo dinamic random number of products
-    $result = db_query(
-      'SELECT * FROM {product} ORDER BY RAND() LIMIT 8'
-    );
+
+    if (isset($_GET['category'])) {
+      $idCategory = $_GET['category'];
+
+      $result = db_query(
+        'SELECT * FROM {product} WHERE category = :id', array(':id' => $idCategory)
+      );
+    }
+    else {
+      //@Todo dinamic random number of products
+      $result = db_query(
+        'SELECT * FROM {product} ORDER BY RAND() LIMIT 8'
+      );
+    }
+
+
     foreach ($result as $record) {
       $id = $record->id;
       $name = ($record->name != '' ? "<h2>" . $record->name . "</h2>" : "");
       $phone = ($record->phone != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $record->phone . "</p>" : "");
       $cellphone = ($record->cellphone != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $record->cellphone . "</p>" : "");
       $email = ($record->email != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $record->email . "</p>" : "");
-      $webpage = ($record->webpage != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $record->webpage . "</p>" : "");
+      $webpage = ($record->webpage != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span><a href='http://" . $record->webpage . "' target='_blank' >" . $record->webpage . "</a></p>" : "");
       $address = ($record->address != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $record->address . "</p>" : "");
 
       $form['left']['newContent_' . $i] = array(
@@ -149,7 +161,10 @@ class Searcher extends FormBase {
         }else {
           $endLine = "";
         }
-        $categories .= "<span class='weight_" . $weight . "'>" . $entity->get('name')->value . "</span>" . $endLine;
+        $categories .= "
+        <span class='weight_" . $weight . "'>
+            <a href='?category=" . $entity->getId() . "' >" . $entity->get('name')->value . " </a>
+        </span>" . $endLine;
         $limit--;
       }
       $i++;
@@ -226,7 +241,7 @@ class Searcher extends FormBase {
         $phone = ($entity->get('phone')->value != '' ? "<p><span class='highlight'>" . t("Phone") . ": </span>" . $entity->get('phone')->value . "</p>" : "");
         $cellphone = ($entity->get('cellphone')->value != '' ? "<p><span class='normal'>" . t("Cellphone") . ": </span>" . $entity->get('cellphone')->value . "</p>" : "");
         $email = ($entity->get('email')->value != '' ? "<p><span class='normal'>" . t("Email") . ": </span>" . $entity->get('email')->value . "</p>" : "");
-        $webpage = ($entity->get('webpage')->value != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span>" . $entity->get('webpage')->value . "</p>" : "");
+        $webpage = ($entity->get('webpage')->value != '' ? "<p><span class='normal'>" . t("Webpage") . ": </span><a href='http://" . $entity->get('webpage')->value . "' target='_blank' >" . $entity->get('webpage')->value . "</a></p>" : "");
         $address = ($entity->get('address')->value != '' ? "<p><span class='normal'>" . t("Address") . ": </span>" . $entity->get('address')->value . "</p>" : "");
 
         $formres['newContent_' . $i] = array(

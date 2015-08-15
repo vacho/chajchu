@@ -53,6 +53,10 @@ use Drupal\user\UserInterface;
  * )
  */
 class Category extends ContentEntityBase implements CategoryInterface {
+  public function getId() {
+    return $this->get('id')->value;
+  }
+
   /**
    * {@inheritdoc}
    */
