@@ -9,8 +9,6 @@ namespace Drupal\chajchu\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\FormBase;
-use Drupal\Core\Form\FormInterface;
-use Drupal\Core\Url;
 use Drupal\chajchu\Entity\Product;
 use Drupal\chajchu\Entity\Category;
 use Drupal\Component\Utility\SafeMarkup;
@@ -151,16 +149,16 @@ class Searcher extends FormBase {
     $i = 0;
     $categories = "<div id='tags'>";
     foreach ($entities as $entity) {
-      $weight = rand(1, 7);
+      $weight = rand(1, 8);
       if ($limit <= 0) {
         break;
       }
       else {
-        if ($i % 2 == 0){
+        /*if ($i % 2 == 0){
           $endLine = "<br>";
         }else {
           $endLine = "";
-        }
+        }*/
         $categories .= "
         <span class='weight_" . $weight . "'>
             <a href='?category=" . $entity->getId() . "' >" . $entity->get('name')->value . " </a>
@@ -184,13 +182,23 @@ class Searcher extends FormBase {
      * Adsense
      */
 
-    $form['right']['forAdsense'] = array(
+    $form['right']['forAdsense'] = [
       '#markup' =>
-        "<div id='adsense'>"
-        . t("Space reserved for advertising") .
-        "</div></div></div>",
+        SafeMarkup::set("<div id='adsense'>"
+        . '
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Right side -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-5452341099082270"
+     data-ad-slot="5378862542"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        ' .
+        "</div></div></div>"),
       '#weight' => 6,
-    );
+    ];
 
     return $form;
   }
