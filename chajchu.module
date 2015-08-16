@@ -39,58 +39,31 @@ function chajchu_theme() {
 *  Implements hook_page_attachments().
 */
 function chajchu_page_attachments(array &$page) {
-  $page['#attached']['library'][] = 'chajchu/buscador';
+  $description = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'description',
+      'content' => t('Searcher of products and services'),
+    ],
+  ];
+  $keywords = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'keywords',
+      'content' => t('Products, services in general. Like garden services, mason, colourman, secreatary, doctor, computing, companies, etc'),
+    ],
+  ];
+
+  $page['#attached']['html_head'][] = [
+    $description,
+    'description',
+  ];
+
+  $page['#attached']['html_head'][] = [
+    $keywords,
+    'keywords',
+  ];
+
+
 }
-/**
- * Implements hook_block_access().
- */
-/*
-function chajchu_block_access(Block $block, $operation, AccountInterface $account, $langcode) {
 
-  //print_r($block->getPluginId());
-  //print_r("<br>");
-  
-  if($block->getPluginId() == "system_menu_block:account") {
-    $block->setRegion('sidebar_second');
-    $block->setWeight('2');
-    $block->save();
-  }
-
-  if($block->getPluginId() == "system_menu_block:main") {
-    $block->disable();
-    $block->save();
-  }
-
-  if($block->getPluginId() == "system_breadcrumb_block") {
-    $block->disable();
-    $block->save();
-  }
-
-  if($block->getPluginId() == "help_block") {
-    $block->disable();
-    $block->save();
-  }
-
-  if($block->getPluginId() == "user_login_block") {
-    $block->disable();
-    $block->save();
-  }
-
-  if($block->getPluginId() == "search_form_block") {
-    $block->disable();
-    $block->save();
-  }
-  
-  if($block->getPluginId() == "system_menu_block:tools") {
-    $block->disable();
-    $block->save();
-  }
-  
-  if($block->getPluginId() == "system_menu_block:footer") {
-    $block->disable();
-    $block->save();
-  }
-
-  return;
-}
-*/
