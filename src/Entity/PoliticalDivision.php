@@ -146,7 +146,7 @@ class PoliticalDivision extends ContentEntityBase implements PoliticalDivisionIn
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
-    
+
     $fields['parent'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Parent'))
       ->setDescription(t('The ID of the parent.'))
@@ -156,19 +156,19 @@ class PoliticalDivision extends ContentEntityBase implements PoliticalDivisionIn
       // ->setDefaultValueCallback('Drupal\node\Entity\Node::getCurrentUserId')
       ->setTranslatable(TRUE)
       ->setDisplayOptions('view', array(
-          'label' => 'hidden',
-          'type' => 'political_division',
-          'weight' => -5,
+        'label' => 'hidden',
+        'type' => 'political_division',
+        'weight' => -5,
       ))
       ->setDisplayOptions('form', array(
-          'type' => 'entity_reference_autocomplete',
-          'weight' => -5,
-          'settings' => array(
-              'match_operator' => 'CONTAINS',
-              'size' => '60',
-              'autocomplete_type' => 'tags',
-              'placeholder' => '',
-          ),
+        'type' => 'entity_reference_autocomplete',
+        'weight' => -5,
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'size' => '60',
+          'autocomplete_type' => 'tags',
+          'placeholder' => '',
+        ),
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);

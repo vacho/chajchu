@@ -166,26 +166,26 @@ class Presentation extends ContentEntityBase implements PresentationInterface {
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
-    
+
     $fields['highlighted'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Highlighted'))
       ->setDescription(t('Highlighted'))
       ->setDisplayOptions('view', array(
-          'label' => 'above',
-          'type' => 'string',
-          'weight' => -3
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -3
       ))
       ->setDisplayOptions('form', array(
-          'type' => 'boolean',
-          'weight' => -3,
+        'type' => 'boolean',
+        'weight' => -3,
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['weight'] = BaseFieldDefinition::create('integer')
-    ->setLabel(t('Weight'))
-    ->setDescription(t('The weight'))
-    ->setSettings(array(
+      ->setLabel(t('Weight'))
+      ->setDescription(t('The weight'))
+      ->setSettings(array(
         'default_value' => 1,
         'max_length' => 2,
         'max' => 10,
@@ -193,18 +193,18 @@ class Presentation extends ContentEntityBase implements PresentationInterface {
         'prefix' => '',
         'suffix' => '',
         'text_processing' => 0,
-    ))
-    ->setDisplayOptions('view', array(
+      ))
+      ->setDisplayOptions('view', array(
         'label' => 'above',
         'type' => 'integer',
         'weight' => -2,
-    ))
-    ->setDisplayOptions('form', array(
+      ))
+      ->setDisplayOptions('form', array(
         'type' => 'integer',
         'weight' => -2,
-    ))
-    ->setDisplayConfigurable('form', TRUE)
-    ->setDisplayConfigurable('view', TRUE);
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))

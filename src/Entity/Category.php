@@ -150,7 +150,7 @@ class Category extends ContentEntityBase implements CategoryInterface {
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
-      
+
     $fields['parent'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Parent'))
       ->setDescription(t('The ID of the parent.'))
@@ -160,19 +160,19 @@ class Category extends ContentEntityBase implements CategoryInterface {
       // ->setDefaultValueCallback('Drupal\node\Entity\Node::getCurrentUserId')
       ->setTranslatable(TRUE)
       ->setDisplayOptions('view', array(
-      		'label' => 'hidden',
-      		'type' => 'category',
-      		'weight' => -5,
+        'label' => 'hidden',
+        'type' => 'category',
+        'weight' => -5,
       ))
       ->setDisplayOptions('form', array(
-      		'type' => 'entity_reference_autocomplete',
-      		'weight' => -5,
-      		'settings' => array(
-      				'match_operator' => 'CONTAINS',
-      				'size' => '60',
-      				'autocomplete_type' => 'tags',
-      				'placeholder' => '',
-      		),
+        'type' => 'entity_reference_autocomplete',
+        'weight' => -5,
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'size' => '60',
+          'autocomplete_type' => 'tags',
+          'placeholder' => '',
+        ),
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);

@@ -50,7 +50,7 @@ class PoliticalDivisionDeleteForm extends ContentEntityConfirmFormBase {
           '@type' => $this->entity->bundle(),
           '@label' => $this->entity->label()
         ]
-        )
+      )
     );
 
     $form_state->setRedirectUrl($this->getCancelUrl());

@@ -44,8 +44,9 @@ class Searcher extends FormBase {
     }
     $result = db_query('SELECT DISTINCT(detail) FROM {product}');
     foreach ($result as $record) {
-      if (strpos($services, $record->detail) === false)
+      if (strpos($services, $record->detail) === FALSE) {
         $services = $record->detail . ", " . $services;
+      }
     }
 
     $form['top']['need'] = array(
@@ -173,7 +174,7 @@ class Searcher extends FormBase {
       '#markup' =>
         "<div id='right'>
             <div id='tags'>"
-            . $categories .
+        . $categories .
         "   </div>",
       '#weight' => 5,
     );
@@ -185,7 +186,7 @@ class Searcher extends FormBase {
     $form['right']['forAdsense'] = [
       '#markup' =>
         SafeMarkup::set("<div id='adsense'>"
-        . '
+          . '
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Right side -->
 <ins class="adsbygoogle"
@@ -196,7 +197,7 @@ class Searcher extends FormBase {
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
         ' .
-        "</div></div></div>"),
+          "</div></div></div>"),
       '#weight' => 6,
     ];
 
@@ -221,7 +222,9 @@ class Searcher extends FormBase {
     $searched = $form_state->getValue('need');
     $operation = $form_state->getValue('op');
 
-    if ($operation == "Oferta") $operation = "Offer";
+    if ($operation == "Oferta") {
+      $operation = "Offer";
+    }
 
     $idsEntities = \Drupal::entityQuery('product', 'OR')
       ->condition('name', $searched, 'CONTAINS')

@@ -36,8 +36,8 @@ function chajchu_theme() {
 }
 
 /**
-*  Implements hook_page_attachments().
-*/
+ *  Implements hook_page_attachments().
+ */
 function chajchu_page_attachments(array &$page) {
   $description = [
     '#tag' => 'meta',
