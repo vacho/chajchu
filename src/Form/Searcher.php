@@ -173,17 +173,7 @@ class Searcher extends FormBase {
     $form['right']['forAdsense'] = [
       '#markup' =>
         SafeMarkup::set("<div id='adsense'>"
-          . '
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Right side -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:600px"
-     data-ad-client="ca-pub-5452341099082270"
-     data-ad-slot="5378862542"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-        ' .
+          . 'Espacio publicitario disponible...' .
           "</div></div></div>"),
       '#weight' => 6,
     ];
